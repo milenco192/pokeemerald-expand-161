@@ -311,25 +311,25 @@ static const s8 sCenterToCornerVecXs[8] ={-32, -16, -16, -32, -32};
 
 const u8 gTypeNames[NUMBER_OF_MON_TYPES][TYPE_NAME_LENGTH + 1] =
 {
-    [TYPE_NORMAL] = _("Normal"),
-    [TYPE_FIGHTING] = _("Fight"),
-    [TYPE_FLYING] = _("Flying"),
-    [TYPE_POISON] = _("Poison"),
-    [TYPE_GROUND] = _("Ground"),
-    [TYPE_ROCK] = _("Rock"),
-    [TYPE_BUG] = _("Bug"),
-    [TYPE_GHOST] = _("Ghost"),
-    [TYPE_STEEL] = _("Steel"),
+    [TYPE_NORMAL] = _("Normal"),//Normal
+    [TYPE_FIGHTING] = _("Fight"),//Pelea
+    [TYPE_FLYING] = _("Flying"),//volad.
+    [TYPE_POISON] = _("Poison"),//Venen.
+    [TYPE_GROUND] = _("Ground"),//Tierra
+    [TYPE_ROCK] = _("Rock"),//Roca
+    [TYPE_BUG] = _("Bug"),//Insec.
+    [TYPE_GHOST] = _("Ghost"),//Fanta.
+    [TYPE_STEEL] = _("Steel"),//Acero
     [TYPE_MYSTERY] = _("???"),
-    [TYPE_FIRE] = _("Fire"),
-    [TYPE_WATER] = _("Water"),
-    [TYPE_GRASS] = _("Grass"),
-    [TYPE_ELECTRIC] = _("Electr"),
-    [TYPE_PSYCHIC] = _("Psychc"),
-    [TYPE_ICE] = _("Ice"),
-    [TYPE_DRAGON] = _("Dragon"),
-    [TYPE_DARK] = _("Dark"),
-    [TYPE_FAIRY] = _("Fairy"),
+    [TYPE_FIRE] = _("Fire"),//Fuego
+    [TYPE_WATER] = _("Water"),//Agua
+    [TYPE_GRASS] = _("Grass"),//Planta
+    [TYPE_ELECTRIC] = _("Electr"),//Elect.
+    [TYPE_PSYCHIC] = _("Psychc"),//Psiqu.
+    [TYPE_ICE] = _("Ice"),//Hielo
+    [TYPE_DRAGON] = _("Dragon"),//Dragon
+    [TYPE_DARK] = _("Dark"),//Sinie.
+    [TYPE_FAIRY] = _("Fairy"),//Hada
 };
 
 // This is a factor in how much money you get for beating a trainer.
@@ -1896,7 +1896,7 @@ static u32 GeneratePartyHash(const struct Trainer *trainer, u32 i)
 void ModifyPersonalityForNature(u32 *personality, u32 newNature)
 {
     u32 nature = GetNatureFromPersonality(*personality);
-    s32 diff = abs((s32)nature - (s32)newNature);
+    s32 diff = abs(nature - newNature);
     s32 sign = (nature > newNature) ? 1 : -1;
     if (diff > NUM_NATURES / 2)
     {
@@ -4745,7 +4745,7 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
 
     // Battler 1
     // Quick Draw
-    if (!ignoreChosenMoves && ability1 == ABILITY_QUICK_DRAW && !IS_MOVE_STATUS(gChosenMoveByBattler[battler1]) && RandomPercentage(RNG_QUICK_DRAW, 30))
+    if (!ignoreChosenMoves && ability1 == ABILITY_QUICK_DRAW && !IS_MOVE_STATUS(gChosenMoveByBattler[battler1]) && Random() % 100 < 30)
         gProtectStructs[battler1].quickDraw = TRUE;
     // Quick Claw and Custap Berry
     if (!gProtectStructs[battler1].quickDraw
@@ -4755,7 +4755,7 @@ u32 GetWhichBattlerFasterArgs(u32 battler1, u32 battler2, bool32 ignoreChosenMov
 
     // Battler 2
     // Quick Draw
-    if (!ignoreChosenMoves && ability2 == ABILITY_QUICK_DRAW && !IS_MOVE_STATUS(gChosenMoveByBattler[battler2]) && RandomPercentage(RNG_QUICK_DRAW, 30))
+    if (!ignoreChosenMoves && ability2 == ABILITY_QUICK_DRAW && !IS_MOVE_STATUS(gChosenMoveByBattler[battler2]) && Random() % 100 < 30)
         gProtectStructs[battler2].quickDraw = TRUE;
     // Quick Claw and Custap Berry
     if (!gProtectStructs[battler2].quickDraw
@@ -4964,7 +4964,6 @@ static void TurnValuesCleanUp(bool8 var0)
             gProtectStructs[i].kingsShielded = FALSE;
             gProtectStructs[i].banefulBunkered = FALSE;
             gProtectStructs[i].quash = FALSE;
-            gProtectStructs[i].usedCustapBerry = FALSE;
         }
         else
         {
@@ -5131,6 +5130,7 @@ static void CheckQuickClaw_CustapBerryActivation(void)
             {
                 if (gProtectStructs[battler].usedCustapBerry)
                 {
+                    gProtectStructs[battler].usedCustapBerry = FALSE;
                     gLastUsedItem = gBattleMons[battler].item;
                     PREPARE_ITEM_BUFFER(gBattleTextBuff1, gLastUsedItem);
                     if (GetBattlerHoldEffect(battler, FALSE) == HOLD_EFFECT_CUSTAP_BERRY)

@@ -3260,6 +3260,63 @@ static const u8 sHydroSteamDescription[] = _(
     "This move's power increases\n"
     "under harsh sunlight.");
 
+static const u8 sMatchaGotchaDescription[] = _(
+    "This is a new move.");
+
+static const u8 sIvyCudgelDescription[] = _(
+    "This is a new move.");
+
+static const u8 sSyrupBombDescription[] = _(
+    "This is a new move.");
+
+static const u8 sBloodMoonDescription[] = _(
+    "This is a new move.");
+
+static const u8 sChange1Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange2Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange3Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange4Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange5Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange6Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange7Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange8Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange9Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange10Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange11Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange12Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange13Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange14Description[] = _(
+    "This is a new move.");
+
+static const u8 sChange15Description[] = _(
+    "This is a new move.");
+
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
     "effect is in development.");
@@ -4099,4 +4156,23 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_MAGICAL_TORQUE - 1] = sMagicalTorqueDescription,
     [MOVE_PSYBLADE - 1] = sPsybladeDescription,
     [MOVE_HYDRO_STEAM - 1] = sHydroSteamDescription,
+    [MOVE_MATCHA_GOTCHA - 1] = sMatchaGotchaDescription,
+    [MOVE_IVY_CUDGEL - 1] = sIvyCudgelDescription,
+    [MOVE_SYRUP_BOMB - 1] = sSyrupBombDescription,
+    [MOVE_BLOOD_MOON - 1] = sBloodMoonDescription,/*
+    [MOVE_CHANGE_1 - 1] = sChange1Description,
+    [MOVE_CHANGE_2 - 1] = sChange2Description,
+    [MOVE_CHANGE_3 - 1] = sChange3Description,
+    [MOVE_CHANGE_4 - 1] = sChange4Description,
+    [MOVE_CHANGE_5 - 1] = sChange5Description,
+    [MOVE_CHANGE_6 - 1] = sChange6Description,
+    [MOVE_CHANGE_7 - 1] = sChange7Description,
+    [MOVE_CHANGE_8 - 1] = sChange8Description,
+    [MOVE_CHANGE_9 - 1] = sChange9Description,
+    [MOVE_CHANGE_10 - 1] = sChange10Description,
+    [MOVE_CHANGE_11 - 1] = sChange11Description,
+    [MOVE_CHANGE_12 - 1] = sChange12Description,
+    [MOVE_CHANGE_13 - 1] = sChange13Description,
+    [MOVE_CHANGE_14 - 1] = sChange14Description,
+    [MOVE_CHANGE_15 - 1] = sChange15Description,*/
 };

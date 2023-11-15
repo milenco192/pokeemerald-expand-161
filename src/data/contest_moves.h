@@ -6066,6 +6066,44 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
     [MOVE_PSYBLADE] = {0}, // TODO
 
     [MOVE_HYDRO_STEAM] = {0}, // TODO
+
+    [MOVE_MATCHA_GOTCHA] = {0}, // TODO
+
+    [MOVE_IVY_CUDGEL] = {0}, // TODO
+
+    [MOVE_SYRUP_BOMB] = {0}, // TODO
+
+    [MOVE_BLOOD_MOON] = {0}, // TODO
+    
+/* [MOVE_CHANGE_1] = {0}, // TODO
+
+    [MOVE_CHANGE_2] = {0}, // TODO
+
+    [MOVE_CHANGE_3] = {0}, // TODO
+
+    [MOVE_CHANGE_4] = {0}, // TODO
+
+    [MOVE_CHANGE_5] = {0}, // TODO
+
+    [MOVE_CHANGE_6] = {0}, // TODO
+
+    [MOVE_CHANGE_7] = {0}, // TODO
+
+    [MOVE_CHANGE_8] = {0}, // TODO
+
+    [MOVE_CHANGE_9] = {0}, // TODO
+
+    [MOVE_CHANGE_10] = {0}, // TODO
+
+    [MOVE_CHANGE_11] = {0}, // TODO
+
+    [MOVE_CHANGE_12] = {0}, // TODO
+
+    [MOVE_CHANGE_13] = {0}, // TODO
+
+    [MOVE_CHANGE_14] = {0}, // TODO
+
+    [MOVE_CHANGE_15] = {0}, // TODO*/
 };
 
 const struct ContestEffect gContestEffects[] =

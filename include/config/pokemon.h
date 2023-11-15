@@ -43,5 +43,7 @@
 #define P_GEN_6_POKEMON             TRUE        // Generation 6 Pokémon (XY, ORAS)
 #define P_GEN_7_POKEMON             TRUE        // Generation 7 Pokémon (SM, USUM, LGPE)
 #define P_GEN_8_POKEMON             TRUE        // Generation 8 Pokémon (SwSh, BDSP, LA)
+#define P_GEN_9_POKEMON             TRUE        // Generation 9 Pokémon (SV)
+#define P_GEN_10_POKEMON            TRUE        // Generation 10 Pokémon (Fakemon Alfores)
 
 #endif // GUARD_CONFIG_POKEMON_H

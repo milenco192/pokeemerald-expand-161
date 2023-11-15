@@ -3,7 +3,6 @@
 #include "battle_anim.h"
 #include "battle_controllers.h"
 #include "characters.h"
-#include "fieldmap.h"
 #include "item_menu.h"
 #include "main.h"
 #include "malloc.h"
@@ -34,9 +33,7 @@
 #undef Q_4_12
 #define Q_4_12(n) (s32)((n) * 4096)
 
-// Alias sBackupMapData to avoid using heap.
-struct BattleTestRunnerState *const gBattleTestRunnerState = (void *)sBackupMapData;
-STATIC_ASSERT(sizeof(struct BattleTestRunnerState) <= sizeof(sBackupMapData), sBackupMapDataSpace);
+EWRAM_DATA struct BattleTestRunnerState *gBattleTestRunnerState = NULL;
 
 static void CB2_BattleTest_NextParameter(void);
 static void CB2_BattleTest_NextTrial(void);
@@ -125,7 +122,9 @@ static u32 BattleTest_EstimateCost(void *data)
 {
     u32 cost;
     const struct BattleTest *test = data;
-    memset(STATE, 0, sizeof(*STATE));
+    STATE = AllocZeroed(sizeof(*STATE));
+    if (!STATE)
+        return 0;
     STATE->runRandomly = TRUE;
     InvokeTestFunction(test);
     cost = 1;
@@ -135,21 +134,23 @@ static u32 BattleTest_EstimateCost(void *data)
         cost *= 3;
     else if (STATE->trials > 1)
         cost *= STATE->trials;
+    FREE_AND_SET_NULL(STATE);
     return cost;
 }
 
 static void BattleTest_SetUp(void *data)
 {
     const struct BattleTest *test = data;
-    memset(STATE, 0, sizeof(*STATE));
+    STATE = AllocZeroed(sizeof(*STATE));
+    if (!STATE)
+        Test_ExitWithResult(TEST_RESULT_ERROR, "OOM: STATE = AllocZerod(%d)", sizeof(*STATE));
     InvokeTestFunction(test);
     STATE->parameters = STATE->parametersCount;
     if (STATE->parametersCount == 0 && test->resultsSize > 0)
         Test_ExitWithResult(TEST_RESULT_INVALID, "results without PARAMETRIZE");
-    if (sizeof(*STATE) + test->resultsSize * STATE->parameters > sizeof(sBackupMapData))
-        Test_ExitWithResult(TEST_RESULT_ERROR, "OOM: STATE (%d) + STATE->results (%d) too big for sBackupMapData (%d)", sizeof(*STATE), test->resultsSize * STATE->parameters, sizeof(sBackupMapData));
-    STATE->results = (void *)((char *)sBackupMapData + sizeof(struct BattleTestRunnerState));
-    memset(STATE->results, 0, test->resultsSize * STATE->parameters);
+    STATE->results = AllocZeroed(test->resultsSize * STATE->parameters);
+    if (!STATE->results)
+        Test_ExitWithResult(TEST_RESULT_ERROR, "OOM: STATE->results = AllocZerod(%d)", sizeof(test->resultsSize * STATE->parameters));
     switch (test->type)
     {
     case BATTLE_TEST_SINGLES:
@@ -434,7 +435,7 @@ u32 RandomWeightedArray(enum RandomTag tag, u32 sum, u32 n, const u8 *weights)
         if (turn && turn->criticalHit)
             return turn->criticalHit - 1;
         else
-            return weights[FALSE] > 0 ? FALSE : TRUE;
+            return FALSE;
 
     case RNG_SECONDARY_EFFECT:
         ASSUME(n == 2);
@@ -961,10 +962,15 @@ static void CB2_BattleTest_NextTrial(void)
 
 static void BattleTest_TearDown(void *data)
 {
-    // Free resources that aren't cleaned up when the battle was
-    // aborted unexpectedly.
-    if (STATE->tearDownBattle)
-        TearDownBattle();
+    if (STATE)
+    {
+        // Free resources that aren't cleaned up when the battle was
+        // aborted unexpectedly.
+        if (STATE->tearDownBattle)
+            TearDownBattle();
+        FREE_AND_SET_NULL(STATE->results);
+        FREE_AND_SET_NULL(STATE);
+    }
 }
 
 static bool32 BattleTest_CheckProgress(void *data)
@@ -1657,18 +1663,8 @@ static const char *const sQueueGroupTypeMacros[] =
 void OpenQueueGroup(u32 sourceLine, enum QueueGroupType type)
 {
     INVALID_IF(DATA.queueGroupType, "%s inside %s", sQueueGroupTypeMacros[type], sQueueGroupTypeMacros[DATA.queueGroupType]);
-    if (DATA.queuedEventsCount > 0
-     && DATA.queuedEvents[DATA.queueGroupStart].groupType == QUEUE_GROUP_NONE_OF
-     && DATA.queuedEvents[DATA.queueGroupStart].groupSize == DATA.queuedEventsCount - DATA.queueGroupStart
-     && type == QUEUE_GROUP_NONE_OF)
-    {
-        INVALID("'NOT x; NOT y;', did you mean 'NONE_OF { x; y; }'?");
-    }
-    else
-    {
-        DATA.queueGroupType = type;
-        DATA.queueGroupStart = DATA.queuedEventsCount;
-    }
+    DATA.queueGroupType = type;
+    DATA.queueGroupStart = DATA.queuedEventsCount;
 }
 
 void CloseQueueGroup(u32 sourceLine)
@@ -1847,6 +1843,8 @@ void QueueStatus(u32 sourceLine, struct BattlePokemon *battler, struct StatusEve
 void ValidateFinally(u32 sourceLine)
 {
     // Defer this error until after estimating the cost.
+    if (STATE->results == NULL)
+        return;
     INVALID_IF(STATE->parametersCount == 0, "FINALLY without PARAMETRIZE");
 }
 

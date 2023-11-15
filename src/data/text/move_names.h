@@ -831,6 +831,25 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_MAGICAL_TORQUE] = _("Magical Torque"),
     [MOVE_PSYBLADE] = _("Psyblade"),
     [MOVE_HYDRO_STEAM] = _("Hydro Steam"),
+    [MOVE_MATCHA_GOTCHA] = _("Matcha Gotcha"),
+    [MOVE_IVY_CUDGEL] = _("Ivy Cudgel"),
+    [MOVE_SYRUP_BOMB] = _("Syrup Bomb"),
+    [MOVE_BLOOD_MOON] = _("Blood Moon"),/*
+    [MOVE_CHANGE_1] = _("Change 1"),
+    [MOVE_CHANGE_2] = _("Change 2"),
+    [MOVE_CHANGE_3] = _("Change 3"),
+    [MOVE_CHANGE_4] = _("Change 4"),
+    [MOVE_CHANGE_5] = _("Change 5"),
+    [MOVE_CHANGE_6] = _("Change 6"),
+    [MOVE_CHANGE_7] = _("Change 7"),
+    [MOVE_CHANGE_8] = _("Change 8"),
+    [MOVE_CHANGE_9] = _("Change 9"),
+    [MOVE_CHANGE_10] = _("Change 10"),
+    [MOVE_CHANGE_11] = _("Change 11"),
+    [MOVE_CHANGE_12] = _("Change 12"),
+    [MOVE_CHANGE_13] = _("Change 13"),
+    [MOVE_CHANGE_14] = _("Change 14"),
+    [MOVE_CHANGE_15] = _("Change 15"),*/
 };
 #else
 // 12 letters
@@ -1665,6 +1684,25 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_MAGICAL_TORQUE] = _("MagiclTorque"),
     [MOVE_PSYBLADE] = _("Psyblade"),
     [MOVE_HYDRO_STEAM] = _("Hydro Steam"),
+    [MOVE_MATCHA_GOTCHA] = _("MatchaGotcha"),
+    [MOVE_IVY_CUDGEL] = _("Ivy Cudgel"),
+    [MOVE_SYRUP_BOMB] = _("Syrup Bomb"),
+    [MOVE_BLOOD_MOON] = _("Blood Moon"),/*
+    [MOVE_CHANGE_1] = _("Change 1"),
+    [MOVE_CHANGE_2] = _("Change 2"),
+    [MOVE_CHANGE_3] = _("Change 3"),
+    [MOVE_CHANGE_4] = _("Change 4"),
+    [MOVE_CHANGE_5] = _("Change 5"),
+    [MOVE_CHANGE_6] = _("Change 6"),
+    [MOVE_CHANGE_7] = _("Change 7"),
+    [MOVE_CHANGE_8] = _("Change 8"),
+    [MOVE_CHANGE_9] = _("Change 9"),
+    [MOVE_CHANGE_10] = _("Change 10"),
+    [MOVE_CHANGE_11] = _("Change 11"),
+    [MOVE_CHANGE_12] = _("Change 12"),
+    [MOVE_CHANGE_13] = _("Change 13"),
+    [MOVE_CHANGE_14] = _("Change 14"),
+    [MOVE_CHANGE_15] = _("Change 15"),*/
 };
 #endif
 

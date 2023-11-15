@@ -210,6 +210,10 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_MINIOR_CORE_VIOLET] = sMiniorVioletFormChangeTable,
     [SPECIES_MINIOR_METEOR_YELLOW] = sMiniorYellowFormChangeTable,
     [SPECIES_MINIOR_CORE_YELLOW] = sMiniorYellowFormChangeTable,
+//    [SPECIES_SOLGALEO] = sSolgaleoFormChangeTable,
+//    [SPECIES_SOLGALEO_BURST] = sSolgaleoFormChangeTable,
+//    [SPECIES_LUNALA] = sLunalaFormChangeTable,
+//    [SPECIES_LUNALA_BURST] = sLunalaFormChangeTable,
     [SPECIES_NECROZMA_DUSK_MANE] = sNecrozmaDuskManeFormChangeTable,
     [SPECIES_NECROZMA_DAWN_WINGS] = sNecrozmaDawnWingsFormChangeTable,
 #endif
@@ -227,5 +231,20 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_ZAMAZENTA_CROWNED_SHIELD] = sZamazentaFormChangeTable,
     [SPECIES_ENAMORUS] = sEnamorusFormChangeTable,
     [SPECIES_ENAMORUS_THERIAN] = sEnamorusFormChangeTable,
-#endif
+#endif/*
+#if P_GEN_9_POKEMON == TRUE
+    [SPECIES_PALAFIN] = sPalafinFormChangeTable,
+    [SPECIES_PALAFIN_HERO] = sPalafinFormChangeTable,
+    [SPECIES_TATSUGIRI] = sTatsugiriFormChangeTable,
+    [SPECIES_TATSUGIRI_DROOPY] = sTatsugiriFormChangeTable,
+    [SPECIES_TATSUGIRI_STRETCHY] = sTatsugiriFormChangeTable,
+    [SPECIES_GIMMIGHOUL] = sGimmighoulFormChangeTable,
+    [SPECIES_GIMMIGHOUL_ROAMING] = sGimmighoulFormChangeTable,
+    [SPECIES_OGERPON] = sOgerponFormChangeTable,
+    [SPECIES_OGERPON_WELLSPRING] = sOgerponFormChangeTable,
+    [SPECIES_OGERPON_HEATHFLAME] = sOgerponFormChangeTable,
+    [SPECIES_OGERPON_CORNERSTONE] = sOgerponFormChangeTable,
+    [SPECIES_TERAPAGOS] = sTerapagosFormChangeTable,
+    [SPECIES_TERAPAGOS] = sTerapagosFormChangeTable,
+#endif*/
 };

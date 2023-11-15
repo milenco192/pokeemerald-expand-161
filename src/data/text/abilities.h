@@ -289,6 +289,11 @@ static const u8 sToxicDebrisDescription[] = _("Throws poison spikes if hit.");
 static const u8 sArmorTailDescription[] = _("Protects from priority.");
 static const u8 sEarthEaterDescription[] = _("Eats ground to heal HP.");
 static const u8 sMyceliumMightDescription[] = _("Status moves never fail.");
+static const u8 sHospitalityDescription[] = _("New.");
+static const u8 sMindsEyeDescription[] = _("New.");
+static const u8 sSupersweetSyrupDescription[] = _("New.");
+static const u8 sToxicChainsDescription[] = _("New.");
+static const u8 sEmbodyAspectDescription[] = _("New.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -592,6 +597,11 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_ARMOR_TAIL] = _("Armor Tail"),
     [ABILITY_EARTH_EATER] = _("Earth Eater"),
     [ABILITY_MYCELIUM_MIGHT] = _("Mycelium Might"),
+    [ABILITY_HOSPITALITY] = _("Hospitality"),
+	[ABILITY_MINDS_EYE] = _("Mind's Eye"),
+	[ABILITY_SUPERSWEET_SYRUP] = _("Supersweet Syrup"),
+	[ABILITY_TOXIC_CHAINS] = _("Toxic Chains"),
+	[ABILITY_EMBODY_ASPECT] = _("Embody Aspect"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -895,6 +905,11 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_ARMOR_TAIL] = _("Armor Tail"),
     [ABILITY_EARTH_EATER] = _("Earth Eater"),
     [ABILITY_MYCELIUM_MIGHT] = _("MceliumMight"),
+    [ABILITY_HOSPITALITY] = _("Hospitality"),
+	[ABILITY_MINDS_EYE] = _("Mind's Eye"),
+	[ABILITY_SUPERSWEET_SYRUP] = _("SupswetSyrup"),
+	[ABILITY_TOXIC_CHAINS] = _("Toxic Chains"),
+	[ABILITY_EMBODY_ASPECT] = _("EmbodyAspect"),
 };
 #endif
 
@@ -1199,4 +1214,9 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_ARMOR_TAIL] = sArmorTailDescription,
     [ABILITY_EARTH_EATER] = sEarthEaterDescription,
     [ABILITY_MYCELIUM_MIGHT] = sMyceliumMightDescription,
+    [ABILITY_HOSPITALITY] = sHospitalityDescription,
+	[ABILITY_MINDS_EYE] = sMindsEyeDescription,
+	[ABILITY_SUPERSWEET_SYRUP] = sSupersweetSyrupDescription,
+	[ABILITY_TOXIC_CHAINS] = sToxicChainsDescription,
+	[ABILITY_EMBODY_ASPECT] = sEmbodyAspectDescription,
 };
